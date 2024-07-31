@@ -14,4 +14,14 @@ const transporter = nodemailer.createTransport({
         rejectUnauthorized: true // Allow self-signed certificates, set to true in production
     }
 })
-module.exports = transporter;
+
+const sendEmail = async (mailOptions) => {
+    try {
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent:', info.response);
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+};
+
+module.exports = sendEmail;

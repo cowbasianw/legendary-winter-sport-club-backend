@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const transporter = require('../config/nodemailerconfig.js');
+const sendEmail = require('./nodemailerconfig'); // Import the sendEmail function
 
-router.post('/', (req, res) => {
+router.post('/join', async (req, res) => {
     const { name, email, message, phone } = req.body;
     console.log('Received data:', { name, email, message, phone });
 
@@ -18,12 +18,13 @@ router.post('/', (req, res) => {
         replyTo: email // Set the reply-to address to the user's email
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send(error.toString());
-        }
-        res.status(200).send('Email sent: ' + info.response);
-    });
+    try {
+        await sendEmail(mailOptions);
+        res.status(200).send('Email sent successfully!');
+    } catch (error) {
+        console.error('Error sending email:', error);
+        res.status(500).send('Error sending email');
+    }
 });
 
 module.exports = router;
