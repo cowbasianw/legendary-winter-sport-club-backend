@@ -17,9 +17,8 @@ app.use(cors({
   // Add a status route
 app.get('/status', (req, res) => {
   res.status(200).send('Server is running successfully!');
-  console.log(`Server is running on port ${PORT}`);
-   
-    console.log("Email User:", process.env.EMAIL_USER);
+  res.status(200).send(`Server is running on port ${PORT}`);
+  res.status(200).send("Email User:", process.env.EMAIL_USER);
 });
 
 // Default route to status
