@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const sendEmail = require('./nodemailerconfig'); // Import the sendEmail function
+const sendEmail = require('../config/nodemailerconfig.js');
+
 
 router.post('/join', async (req, res) => {
     const { name, email, message, phone } = req.body;
