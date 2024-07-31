@@ -5,8 +5,12 @@ const joinRouter = require('./routes/join.js');
 
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use('/api/join', joinRouter);
+// Configure CORS to allow requests from https://legendarywintersports.com
+app.use(cors({
+    origin: 'https://legendarywintersports.com'
+  }));
+  
+  app.use(bodyParser.json());
+  app.use('/api/join', joinRouter);
 
 module.exports = app;
