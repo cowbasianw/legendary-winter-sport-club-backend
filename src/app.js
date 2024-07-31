@@ -10,6 +10,12 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add methods as needed
   allowedHeaders: ['Content-Type', 'Authorization'] // Add headers as needed
 }));
+
+app.options('*', cors({
+    origin: 'https://legendarywintersports.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
   
   app.use(bodyParser.json());
   app.use('/api/join', joinRouter);
