@@ -3,7 +3,7 @@ const router = express.Router();
 const sendEmail = require('../config/nodemailerconfig.js');
 
 
-router.post('/join', async (req, res) => {
+router.post('/', async (req, res) => {
     const { name, email, message, phone } = req.body;
     console.log('Received data:', { name, email, message, phone });
 
