@@ -13,4 +13,10 @@ app.use(cors({
   app.use(bodyParser.json());
   app.use('/api/join', joinRouter);
 
+  // Add a status route
+app.get('/status', (req, res) => {
+  res.status(200).send('Server is running successfully!');
+});
+
+
 module.exports = app;
