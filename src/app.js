@@ -18,5 +18,10 @@ app.get('/status', (req, res) => {
   res.status(200).send('Server is running successfully!');
 });
 
+// Default route to status
+app.get('/', (req, res) => {
+  res.status(200).send('Server is running successfully! Default route active.');
+});
+
 
 module.exports = app;
