@@ -7,7 +7,7 @@ const app = express();
 
 // Configure CORS in app if not already set
 const corsOptions = {
-  origin: ['https://legendarywintersports.com', 'http://localhost:5173'],
+  origin: ['https://legendarywintersports.com', 'https://www.legendarywintersports.com', 'http://localhost:5173'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
