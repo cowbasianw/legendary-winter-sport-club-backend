@@ -93,11 +93,21 @@ app.get('/galleryPhotos', (req, res) => {
       console.error(err);
       res.status(500).send('Error fetching data');
     } else {
-      res.json(results);
+      // Transform coach name and semester to URL-friendly format
+      const photos = results.map(photo => {
+        const formattedCoach = photo.coach.replace(/\s+/g, '_');  // Replace spaces with underscores in coach's name
+        const formattedSemester = photo.semster.replace(/\s+/g, '_');  // Replace spaces with underscores in semester
+        const imageUrl = `https://legendarywintersports.com/images/${formattedCoach}/${formattedSemester}/${photo.image_url}`;
+
+        return {
+          ...photo,
+          image_url: imageUrl,  // Include the new formatted URL
+        };
+      });
+      res.json(photos);
     }
   });
 });
-
 
 module.exports = app;
 
