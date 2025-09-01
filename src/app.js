@@ -24,16 +24,17 @@ app.use('/api/waiver', waiverRouter);
 
 // MySQL connection pool setup
 const dbPool = mysql.createPool({
-  connectionLimit: 10, // Number of connections in the pool
-  host: 'srv1533.hstgr.io', // or use '82.197.82.40'
+  connectionLimit: 10,
+  host: 'srv1533.hstgr.io',
   user: 'u666730114_cowbasianw',
   password: 'Warhammer40k@@',
   database: 'u666730114_legendaryDB',
-  // Optional: Adjust timeout settings if needed
-  connectTimeout: 10000, // 10 seconds timeout for connecting
-  acquireTimeout: 10000, // 10 seconds timeout for acquiring connection from pool
-  waitForConnections: true, // Queue requests when no connection is available
+  connectTimeout: 30000,
+  acquireTimeout: 30000,
+  waitForConnections: true,
+  ssl: { rejectUnauthorized: true } // or provide cert if Hostinger gives one
 });
+
 
 // Function to get a connection from the pool and handle errors
 function handleDisconnect() {
