@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const joinRouter = require('./routes/join.js');
-const waiverRouter = require('./routes/waiver.js');
 const mysql = require('mysql');
 const cors = require('cors');
 const app = express();
@@ -19,7 +18,6 @@ app.options('*', cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use('/api/join', joinRouter);
-app.use('/api/waiver', waiverRouter);
 
 
 // MySQL connection pool setup
