@@ -30,8 +30,8 @@ const dbPool = mysql.createPool({
   password: 'Warhammer40k@@',
   database: 'u666730114_legendaryDB',
   // Optional: Adjust timeout settings if needed
-  connectTimeout: 30000, // 10 seconds timeout for connecting
-  acquireTimeout: 30000, // 10 seconds timeout for acquiring connection from pool
+  connectTimeout: 10000, // 10 seconds timeout for connecting
+  acquireTimeout: 10000, // 10 seconds timeout for acquiring connection from pool
   waitForConnections: true, // Queue requests when no connection is available
 });
 
