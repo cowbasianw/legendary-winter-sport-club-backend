@@ -2,14 +2,20 @@ const express = require('express');
 const router = express.Router();
 const sendEmail = require('../config/nodemailerconfig.js');
 
-const { memberName,
+
+router.post('/', async (req, res) => {
+    // Make sure req.body exists
+  if (!req.body) {
+    console.error("No request body received");
+    return res.status(400).json({ error: "Missing request body" });
+  }
+    const { memberName,
         parentName,
         signature,
         date,
         agree } = req.body;
     console.log('Received data:', { memberName, parentName, signature, date, agree });
 
-router.post('/', async (req, res) => {
 
     const mailOptions = {
         from: process.env.EMAIL_USER,
